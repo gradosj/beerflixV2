@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="src/css/reset.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="src/css/miCss.css">
+
+
+  <title>Aprendiendo FrontEnd</title>
+</head>
+
+<body>
+  <header class="header">
+
+    <nav class="navbar navbar-light bg-light">
+      <a class='titulo' href='/index.html'>BeerFlix</a>
+      <form id='search-form' class="form-inline">
+        <input id='input-search' name='filtro' class="form-control mr-sm-2" type="search" placeholder="Search"
+          aria-label="Search">
+        <input id='filtroFecha' class="form-control mr-sm-2" name='filtroFecha' type="date" placeholder="date"
+          aria-label="datef">
+        <button id='submit' class="btn btn-outline-success my-2 my-sm-0 miboton" type="button">Search</button>
+      </form>
+
+    </nav>
+  </header>
+
+  <picture class="fondo">
+    <source srcset="/src/images/fondo@hires.jpeg" media="(min-width: 1200px)">
+    <source srcset="/src/images/fondo@tablet.jpeg" media="(min-width: 768px)">
+
+    <img class="fondo" src="/src/images/fondo@mobile.jpeg" alt="fondo">
+
+  </picture>
+
+
+  <br><br><br>
+  <div class="container">
+
+    <div id='show-section' class="row">
+
+      <!-- codigo automatico inicio -->
+      <div id='show-section' class="col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid redimension" height="600" src="${image}" alt="cerveza">
+          <div class="card-body">
+            <h4 class="card-title">${name}</h4>
+            <p class="card-text">${firstBrewed}</p>
+            <a id="detalle" href="/detail/${beerId}" class="btn btn-primary">Ir a …</a>
+          </div>
+        </div>
+      </div>
+      <div id='show-section' class="col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid redimension" height="600" src="${image}" alt="cerveza">
+          <div class="card-body">
+            <h4 class="card-title">${name}</h4>
+            <p class="card-text">${firstBrewed}</p>
+            <a id="detalle" href="/detail/${beerId}" class="btn btn-primary">Ir a …</a>
+          </div>
+        </div>
+      </div>
+      <div id='show-section' class="col-md-4">
+        <div class="card">
+          <img class="card-img-top img-fluid redimension" height="600" src="${image}" alt="cerveza">
+          <div class="card-body">
+            <h4 class="card-title">${name}</h4>
+            <p class="card-text">${firstBrewed}</p>
+            <a id="detalle" href="/detail/${beerId}" class="btn btn-primary">Ir a …</a>
+          </div>
+        </div>
+      </div>
+      <!-- codigo automatico final -->
+
+     
+      <script type="module" src="/src/js/navbar.js"></script>ç
+      <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+      
+      
+
+
+</body>
+
+
+
+
+
+</html>

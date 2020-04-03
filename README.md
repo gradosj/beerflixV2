@@ -1,4 +1,2 @@
-# beerflixV2
-Segunda versión de la practica de frontEnd Avanzado
+# Desarrollo Frontend con JavaScript
 
-sincro
