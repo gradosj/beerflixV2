@@ -1,4 +1,7 @@
 //import renderShows from "./main";
+import api from './api.js';
+
+const {getShows } = api();
 
 const templateShow = (show) => {
     return `
@@ -19,16 +22,11 @@ const templateShow = (show) => {
 
 const renderShows = (element, items) => {
 
-    console.log('----------');
-    console.log(items);
-
     const htmlShows = items.map(function(show) {
         console.log(templateShow(show));
         return templateShow(show);
-    });
-
-    console.log(htmlShows);
-    
+    }).join(''); // El metodo join sirve para indicar el campo con el que se separan los campos
+                 // del array, en este caso al ir vacios se separaran sin caracter. 
 
 
     element.innerHTML = htmlShows;
@@ -36,23 +34,25 @@ const renderShows = (element, items) => {
     
 };
 
-const renderShowsDOM = text => {
+const renderHomeShows = async text => {
+    try {
+        const shows = [
+            { name: 'ceveza de prueba', firstBrewed: 'prueba prueba prueba', image: 'imagen prueba 1', beerId: 'id1' },
+            { name: 'ceveza de prueba 2', firstBrewed: '2 prueba prueba prueba', image: 'imagen prueba 2', beerId: 'id2' },
+        ];
+    
+        getShows(text);
+    
+        const showSection = document.querySelector('#show-section');
+        console.log('aaaaaaaaaaaaaaaaaaaaa', showSection);
+    
+        renderShows(showSection, shows);
 
-    const shows = [
-        { name: 'ceveza de prueba', firstBrewed: 'prueba prueba prueba', image: 'imagen prueba 1', beerId: 'id1' },
-        { name: 'ceveza de prueba 2', firstBrewed: '2 prueba prueba prueba', image: 'imagen prueba 2', beerId: 'id2' },
-    ];
 
-    const showSection = document.querySelector('#show-section');
-    console.log('aaaaaaaaaaaaaaaaaaaaa', showSection);
-
-    renderShows(showSection, shows);
-
-
-
-
-
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 
-export default renderShowsDOM;
+export default renderHomeShows;

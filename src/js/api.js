@@ -1,78 +1,26 @@
 const API_KEY = 'V0XRE4Q-FTYMPCA-MDWV1J2-XCFC55F';
 
-const api = (apiURL = 'https://api.tvmaze.com') => {
-  const searchAPIEndpoint = `${apiURL}/search/shows?q`;
-  const showsAPIEndpoint = `${apiURL}/shows`;
+const api = (API) => {
   return {
-    getShows: async (text) => {
+    getShows: async filtro1 => {
       try {
-        const URL = text ? `${searchAPIEndpoint}=${text}` : showsAPIEndpoint;
+        let URL = `https://beerflix-api.herokuapp.com/api/v1/beers`;
+
         const response = await fetch(URL, {
           method: 'GET',
-          // headers: {
-          //   'X-API-KEY': API_KEY,
-          // },
+          headers: {
+            'X-API-KEY': API_KEY
+          }
         });
+
         if (!response.ok) {
           throw new Error('Error retrieving shows');
         }
         const data = await response.json();
-        const shows = data.map((result) => {
-          if (result.show) {
-            return result.show;
-          }
-          return result;
-        });
-        return shows;
+        console.log(data);
+
       } catch (err) {
         console.error(err.message);
-        throw err;
-      }
-    },
-    getShowDetail: (id) => (
-      fetch(`${showsAPIEndpoint}/${id}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Error retrieving show ${id}`);
-          }
-          return response.json();
-        })
-        .catch((err) => {
-          console.error(err.message);
-          throw err;
-        })
-    ),
-    getQuotes: async (id) => {
-      try {
-        const response = await fetch(`${apiURL}/quote/${id}`);
-        if (!response.ok) {
-          throw new Error('Error getQuotes');
-        }
-        const quotes = await response.json();
-        return quotes;
-      } catch (err) {
-        console.error(err);
-        throw err;
-      }
-    },
-    createQuote: async (id, text) => {
-      try {
-        const response = await fetch(`${apiURL}/quote/${id}`, {
-          method: 'POST',
-          body: JSON.stringify({ quote: text }),
-          headers: {
-            'Content-type': 'application/json',
-            'X-API-KEY': API_KEY,
-          },
-        });
-        console.log(response);
-        if (!response.ok) {
-          throw new Error('Error createQuote');
-        }
-        const responseBody = await response.json();
-        return responseBody;
-      } catch (err) {
-        console.error(err);
         throw err;
       }
     },
@@ -80,4 +28,3 @@ const api = (apiURL = 'https://api.tvmaze.com') => {
 };
 
 export default api;
-
