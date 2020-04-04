@@ -1,4 +1,7 @@
-console.log('holiiiiiiiiiiiiiii');
+import renderHomeShows from './shows.js';
+import './navbar.js';
+
+renderHomeShows();
 
 
-export default renderShows;
+export default renderHomeShows;
