@@ -6,6 +6,10 @@ const api = (API) => {
       try {
         let URL = `https://beerflix-api.herokuapp.com/api/v1/beers`;
 
+        if (filtro1 != '') {
+          URL = `https://beerflix-api.herokuapp.com/api/v1/beers?search=${filtro1}`; 
+        }
+        
         const response = await fetch(URL, {
           method: 'GET',
           headers: {
@@ -17,7 +21,8 @@ const api = (API) => {
           throw new Error('Error retrieving shows');
         }
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
+        return data;
 
       } catch (err) {
         console.error(err.message);

@@ -21,13 +21,11 @@ const templateShow = (show) => {
 
 
 const renderShows = (element, items) => {
-
+     
     const htmlShows = items.map(function(show) {
-        console.log(templateShow(show));
         return templateShow(show);
     }).join(''); // El metodo join sirve para indicar el campo con el que se separan los campos
                  // del array, en este caso al ir vacios se separaran sin caracter. 
-
 
     element.innerHTML = htmlShows;
 
@@ -35,20 +33,11 @@ const renderShows = (element, items) => {
 };
 
 const renderHomeShows = async text => {
-    try {
-        const shows = [
-            { name: 'ceveza de prueba', firstBrewed: 'prueba prueba prueba', image: 'imagen prueba 1', beerId: 'id1' },
-            { name: 'ceveza de prueba 2', firstBrewed: '2 prueba prueba prueba', image: 'imagen prueba 2', beerId: 'id2' },
-        ];
-    
-        getShows(text);
-    
+    try {   
+        const {beers} = await getShows(text);
         const showSection = document.querySelector('#show-section');
-        console.log('aaaaaaaaaaaaaaaaaaaaa', showSection);
-    
-        renderShows(showSection, shows);
-
-
+       console.log('estos son los shows: -->', beers);
+        renderShows(showSection, beers);
     } catch (err) {
         console.log(err);
     }
