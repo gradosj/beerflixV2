@@ -4,3 +4,5 @@ export const replace = elemento => (removeClass, addCLass) => {
     elemento.classList.add(addCLass);
 };
 
+
+
