@@ -2,8 +2,14 @@ import api from './api.js';
 
 const { getShowDetail } = api();
 
-const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes } = {}) => {
-	return `
+const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes, comments } = {}) => {
+  console.log('comentariossssssssssssssssssssssssssssssss');
+  console.log(comments);
+
+  comments.reverse();
+  const {comment, dateComment} = comments[0];
+
+  return `
     <div class="card mb-3" style="max-width: 800px;">
         <div class="row no-gutters">
           <div class="col-md-4">
@@ -16,7 +22,10 @@ const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes } 
               <p class="card-text">${description}</p>
               
               <p id = "imgLikes" class="card-text"><small class="text-muted">LIKE! ${likes}</small></p>
+              <p class="card-text"> Fecha: ${dateComment} </p>
+              <p class="card-text">   ${comment} </p>
             </div>
+           
           </div>
         </div>
       </div>
@@ -26,22 +35,22 @@ const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes } 
 
 
 
-
 const renderDetail = async (beerId) => {
-	try {
-		const { beer } = await getShowDetail(beerId);
+  try {
+    const { beer } = await getShowDetail(beerId);
 
     const template = detailTeplate(beer);
-    
+
     console.log('el template tiene: ', template);
 
     const mainSection = document.querySelector('#show-section');
     
+
     mainSection.innerHTML = template;
-    console.log('revisar sto---> ', mainSection.innerHTML);
-	} catch (err) {
-		console.error(err);
-	}
+
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 export default renderDetail;
