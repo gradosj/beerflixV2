@@ -1,15 +1,15 @@
 const API_KEY = 'V0XRE4Q-FTYMPCA-MDWV1J2-XCFC55F';
 
 const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers') => {
-//const searchAPIEndpoint = `${apiURL}/?search=`;
-const showsAPIEndpoint = `${apiURL}`;
+  //const searchAPIEndpoint = `${apiURL}/?search=`;
+  const showsAPIEndpoint = `${apiURL}`;
 
-return {
+  return {
     getShows: async filtro1 => {
       try {
 
         const URL = filtro1 ? `https://beerflix-api.herokuapp.com/api/v1/beers?search=${filtro1}` : showsAPIEndpoint;
-      
+
 
         const response = await fetch(URL, {
           method: 'GET',
@@ -29,6 +29,32 @@ return {
         console.error(err.message);
         throw err;
       }
+    },
+    
+    getShowDetail: id => {
+      console.log('AKJSDHAKLSJDHALSKJDHAKLSJDHALKSJDH');
+      console.log(`${showsAPIEndpoint}/${id}`);
+      
+      return fetch(`${showsAPIEndpoint}/${id}`, {
+        method: 'GET',
+        headers: {
+          'X-API-KEY': API_KEY
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error retrieving shows');
+          }
+          return response.json();
+        })
+
+        .then(detail => {
+          return detail;
+        })
+        .catch(err => {
+          console.error(err.message);
+          throw err;
+        })
     },
   };
 };

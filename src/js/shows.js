@@ -20,6 +20,8 @@ const templateShow = (show) => {
 };
 
 
+
+
 const renderShows = (element, items) => {
      
     const htmlShows = items.map(function(show) {
@@ -36,7 +38,10 @@ const renderHomeShows = async text => {
     try {   
         const {beers} = await getShows(text);
         const showSection = document.querySelector('#show-section');
-       console.log('estos son los shows: -->', beers);
+
+        console.log('estos son los elements: ', showSection);
+        console.log('estos son los shows: -->', beers);
+       
         renderShows(showSection, beers);
     } catch (err) {
         console.log(err);
