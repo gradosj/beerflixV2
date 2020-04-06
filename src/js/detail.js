@@ -57,8 +57,8 @@ const renderDetail = async (beerId) => {
     const imgLikes = document.querySelector('#imgLikes');
     imgLikes.addEventListener('click', async evt => {
       //evt.preventDefault();
-      pushLikes(beerId);
-      await imprimirHTML(beer);
+      await pushLikes(beerId);
+      imprimirHTML(beer);
       renderDetail(beerId);
      
       

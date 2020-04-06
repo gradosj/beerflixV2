@@ -36,6 +36,8 @@ const renderShows = (element, items) => {
 
 const renderHomeShows = async text => {
     try {   
+
+        
         const {beers} = await getShows(text);
         const showSection = document.querySelector('#show-section');
 

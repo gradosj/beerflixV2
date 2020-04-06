@@ -1,17 +1,18 @@
 {
   "name": "class-front-avanzado",
   "version": "1.0.0",
-  "description": "",
+  "description": "Practica front end avanzado",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.keepcoding.io/keepcoding-bootcamps/full-stack-web-bootcamp-8/desarrollo-frontend-con-javascript.git"
+    "url": "https://github.com/gradosj/beerflixV2.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "J.A Grados",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
