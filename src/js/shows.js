@@ -34,11 +34,11 @@ const renderShows = (element, items) => {
     
 };
 
-const renderHomeShows = async text => {
+const renderHomeShows = async (text, fecha) => {
     try {   
 
         
-        const {beers} = await getShows(text);
+        const {beers} = await getShows(text, fecha);
         const showSection = document.querySelector('#show-section');
 
         console.log('estos son los elements: ', showSection);

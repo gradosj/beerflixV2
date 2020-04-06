@@ -8,10 +8,25 @@ const showsAPIEndpoint = `${apiURL}`;
 
 
   return {
-    getShows: async filtro1 => {
+    getShows: async (filtro1, fecha) => {
       try {
 
+        console.log('desde el api ----> ', fecha)
+
         const URL = filtro1 ? `https://beerflix-api.herokuapp.com/api/v1/beers?search=${filtro1}` : showsAPIEndpoint;
+
+        /* validaciones de fecha */
+        let fechaOK;
+
+        console.log('la puta fecha: ' , fecha)
+
+        if (fecha != undefined && fecha != '') {
+            fechaOK = goodDate(fecha);
+
+            console.log('valor de fechaOK --> ', fechaOK);
+            console.log(true);
+        }
+
 
         console.log()
 
@@ -90,5 +105,14 @@ const showsAPIEndpoint = `${apiURL}`;
     
   };
 };
+
+
+
+const goodDate = (filtroFecha) => {
+  var info = filtroFecha.split('-');
+  return info[1] + '/' + info[0];
+};
+
+
 
 export default api;
