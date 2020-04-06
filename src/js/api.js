@@ -30,11 +30,11 @@ const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers') => {
         throw err;
       }
     },
-    
+
     getShowDetail: id => {
       console.log('AKJSDHAKLSJDHALSKJDHAKLSJDHALKSJDH');
       console.log(`${showsAPIEndpoint}/${id}`);
-      
+
       return fetch(`${showsAPIEndpoint}/${id}`, {
         method: 'GET',
         headers: {
@@ -56,6 +56,34 @@ const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers') => {
           throw err;
         })
     },
+
+    pushLikes: beerId => { 
+        let api = `https://beerflix-api.herokuapp.com/api/v1/beers/${beerId}/like`;
+
+
+        return fetch(api, {
+          method: 'POST',
+          headers: {
+            'X-API-KEY': API_KEY,
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error sending like');
+          }
+          return response.json();
+        })
+
+        .then(detail => {
+          return detail;
+        })
+        .catch(err => {
+          console.error(err.message);
+          throw err;
+        })
+        /*  .then(datos => console.log(datos.beers))*/
+      }
+    
   };
 };
 
