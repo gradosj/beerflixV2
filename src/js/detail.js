@@ -5,9 +5,7 @@ const { getShowDetail } = api();
 const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes, comments } = {}) => {
   console.log('comentariossssssssssssssssssssssssssssssss');
   console.log(comments);
-
-  comments.reverse();
-  const {comment, dateComment} = comments[0];
+  
 
   return `
     <div class="card mb-3" style="max-width: 800px;">
@@ -22,9 +20,7 @@ const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes, c
               <p class="card-text">${description}</p>
               
               <p id = "imgLikes" class="card-text"><small class="text-muted">LIKE! ${likes}</small></p>
-              <p class="card-text"> Fecha: ${dateComment} </p>
-              <p class="card-text">   ${comment} </p>
-            </div>
+  
            
           </div>
         </div>
