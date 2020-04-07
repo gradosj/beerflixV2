@@ -6,7 +6,9 @@ export const STORAGE_TYPE = 'lStorage';
 export const INPUT_STORAGE_FECHA = 'navbar-fecha';
 
 
+
 const { setItem, getItem } = storage(STORAGE_TYPE);
+
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#input-search');
 const fechaInput = document.querySelector('#filtroFecha');
@@ -15,7 +17,7 @@ searchInput.value = getItem(INPUT_STORAGE_ID);
 fechaInput.value = getItem(INPUT_STORAGE_FECHA);
 
 
-searchForm.addEventListener('click', (evt) => {
+searchForm.addEventListener('submit', (evt) => {
 	evt.preventDefault();
 
 	if (searchInput.validity.valid || fechaInput.validity.valid) {
