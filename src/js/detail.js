@@ -21,7 +21,10 @@ const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes, c
               <p class="card-text">${firstBrewed}</p>
               <p class="card-text">${description}</p>
               
-              <p id = "imgLikes" class="card-text"><small class="text-muted">LIKE! ${likes}</small></p>
+              <p id = "imgLikes" class="card-text"><small class="text-muted"><img class="icon" src="/src/images/like.png" alt=""> ${likes}
+            
+          </small>
+              
   
            
           </div>

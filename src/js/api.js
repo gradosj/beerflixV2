@@ -1,7 +1,7 @@
 
 const API_KEY = 'V0XRE4Q-FTYMPCA-MDWV1J2-XCFC55F';
 
-const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers?') => {
+const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers?limit=10') => {
   //const searchAPIEndpoint = `${apiURL}/?search=`;
 const showsAPIEndpoint = `${apiURL}`;
 const showsApiDetails  = 'https://beerflix-api.herokuapp.com/api/v1/beers';

@@ -34,7 +34,7 @@ img {
 }
 
 div.card {
-    margin-top: 10px;
+    margin-top: 10px;*/
 }
 
 .redimension {
@@ -42,9 +42,9 @@ div.card {
     max-width: auto;
     max-height: 600px;
     text-align: center;
-    margin: 10px;
+    margin: 0px;
     padding: 10px 60px 0px 60px;
-    background-color: chocolate;
+    background-color: rgb(1, 80, 5);
 }
 
 .fondo {
@@ -53,6 +53,10 @@ div.card {
 
 a:link {
     text-decoration: none;
+}
+
+.icon{
+    width: 16px; height: 16px;
 }
 
 
