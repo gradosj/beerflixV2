@@ -1,6 +1,3 @@
-
-
-console.log('DESDE EL storage');
 const lStorage = {
 	setItem: (key, value) => localStorage.setItem(key, value),
 	getItem: (key) => localStorage.getItem(key)
@@ -24,5 +21,3 @@ const storage = (type = 'lStorage') => {
 };
 
 export default storage;
-
-

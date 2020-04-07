@@ -5,9 +5,6 @@ const { getShowDetail, pushLikes } = api();
 console.log('DESDE EL DETAIL');
 
 const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes, comments } = {}) => {
-  console.log('comentariossssssssssssssssssssssssssssssss');
-  console.log(comments);
-  
 
   return `
     <div class="card mb-3" style="max-width: 800px;">
@@ -34,8 +31,10 @@ const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes, c
     `;
 };
 
+/* Funcion que repinta los likes, dejamos el texto para el efecto al clickar */
+
 function imprimirHTML(datos) {
-  //console.log('bla bla' , datos);
+ 
   
   const { likes } = datos;
                 let ponLikes = document.querySelector('#imgLikes');
