@@ -1,54 +1,77 @@
 //import renderShows from "./main";
 import api from './api.js';
 
-const {getShows } = api();
 
-const templateShow = (show) => {
-    return `
-    <div id='show-section' class="col-md-4">
-    <div class="card">
-      <img class="card-img-top img-fluid redimension" height="600" src="${show.image}" alt="cerveza">
-      <div class="card-body">
-        <h4 class="card-title">${show.name}</h4>
-        <p class="card-text">${show.firstBrewed}</p>
-        <a id="detalle" href="/detail/${show.beerId}" class="btn btn-primary">Ir a …</a>
-      </div>
-    </div>
-  </div>
-    
-    `;
-};
+console.log('DESDE EL SHOWS');
+const { getShows } = api();
 
 
 
+const renderShows = (element, items, fecha) => {
 
-const renderShows = (element, items) => {
-     
-    const htmlShows = items.map(function(show) {
-        return templateShow(show);
-    }).join(''); // El metodo join sirve para indicar el campo con el que se separan los campos
-                 // del array, en este caso al ir vacios se separaran sin caracter. 
+  element.innerHTML = '';
 
-    element.innerHTML = htmlShows;
+  
+  items.forEach((items) => {
 
-    
+    let fechaOK;
+
+    if (fecha != '' || fecha === undefined) {
+      fechaOK = goodDate(fecha);
+      let fechaInput = new Date('01/' + fechaOK);
+      let fechaBeer = new Date('01/' + items.firstBrewed);
+      if (fechaInput.getTime() > fechaBeer.getTime()) {
+        renderiza(element, items);
+      } 
+      } else {
+        renderiza(element, items);
+
+    }
+
+
+  });
+
+
+
 };
 
 const renderHomeShows = async (text, fecha) => {
-    try {   
+  try {
+    console.log('dentro del show:' , fecha);
 
-        
-        const {beers} = await getShows(text, fecha);
-        const showSection = document.querySelector('#show-section');
 
-        console.log('estos son los elements: ', showSection);
-        console.log('estos son los shows: -->', beers);
-       
-        renderShows(showSection, beers);
-    } catch (err) {
-        console.log(err);
-    }
+    const { beers } = await getShows(text, fecha);
+    const showSection = document.querySelector('#show-section');
+
+    renderShows(showSection, beers, fecha);
+  } catch (err) {
+    console.log(err);
+  }
 };
+
+const goodDate = (filtroFecha) => {
+  var info = filtroFecha.split('-');
+  return info[1] + '/' + info[0];
+};
+
+
+const renderiza = (element, items) => {
+  
+  element.innerHTML = element.innerHTML +
+  `
+           <div id='show-section' class="col-md-4">
+           <div class="card">
+             <img class="card-img-top img-fluid redimension" height="600" src="${items.image}" alt="cerveza">
+             <div class="card-body">
+               <h4 class="card-title">${items.name}</h4>
+               <p class="card-text">${items.firstBrewed}</p>
+               <a id="detalle" href="/detail/${items.beerId}" class="btn btn-primary">Ir a …</a>
+             </div>
+           </div>
+         </div>
+           
+           `;
+}
 
 
 export default renderHomeShows;

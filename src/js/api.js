@@ -1,19 +1,23 @@
 
 const API_KEY = 'V0XRE4Q-FTYMPCA-MDWV1J2-XCFC55F';
 
-const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers') => {
+const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers?') => {
   //const searchAPIEndpoint = `${apiURL}/?search=`;
 const showsAPIEndpoint = `${apiURL}`;
+const showsApiDetails  = 'https://beerflix-api.herokuapp.com/api/v1/beers';
 
+console.log('DESDE EL API');
 
 
   return {
     getShows: async (filtro1, fecha) => {
       try {
 
+        
+
         console.log('desde el api ----> ', fecha)
 
-        const URL = filtro1 ? `https://beerflix-api.herokuapp.com/api/v1/beers?search=${filtro1}` : showsAPIEndpoint;
+        const URL = filtro1 ? `https://beerflix-api.herokuapp.com/api/v1/beers?limit=10&search=${filtro1}` : showsAPIEndpoint;
 
         /* validaciones de fecha */
         let fechaOK;
@@ -52,9 +56,9 @@ const showsAPIEndpoint = `${apiURL}`;
 
     getShowDetail: id => {
       console.log('AKJSDHAKLSJDHALSKJDHAKLSJDHALKSJDH');
-      console.log(`${showsAPIEndpoint}/${id}`);
+      console.log(`${showsApiDetails}/${id}`);
 
-      return fetch(`${showsAPIEndpoint}/${id}`, {
+      return fetch(`${showsApiDetails}/${id}`, {
         method: 'GET',
         headers: {
           'X-API-KEY': API_KEY

@@ -1,10 +1,13 @@
-import {replace} from './ui.js';
-import renderShowsDOM from './shows.js';
 import storage from './storage.js';
+import renderShowsDOM from './shows.js';
+
 
 export const INPUT_STORAGE_ID = 'navbar-input';
 export const STORAGE_TYPE = 'lStorage';
 export const INPUT_STORAGE_FECHA = 'navbar-fecha'; 
+
+
+console.log('DESDE EL MAVBAR');
 
 const {setItem, getItem} = storage(STORAGE_TYPE);
 
@@ -20,10 +23,12 @@ console.log(fechaInput.value);
 
 
 // DUDA ---- > NO PILLA EL EVENTO SUBMIT AL CLICKAR EN BOTON
-searchForm.addEventListener('submit', evt => {
+searchForm.addEventListener('click', evt => {
     evt.preventDefault();
     console.log('fecha desde el navbar --> ');
-    if (searchInput.validity.valid) {
+    if (searchInput.validity.valid || fechaInput.validity.valid) {
+
+        console.log('entra en la validacion del navbar');
 
         console.log('fecha desde el navbar --> ', fechaInput.value);
         renderShowsDOM(searchInput.value, fechaInput.value); //pintamos el show
