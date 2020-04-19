@@ -23,7 +23,7 @@ const enviar = (evt) => {
 	if (searchInput.validity.valid || fechaInput.validity.valid) {
 		renderShowsDOM(searchInput.value, fechaInput.value); //pintamos el show
 
-		//almacenar en local storage
+		// local storage
 		setItem(INPUT_STORAGE_ID, searchInput.value);
 		setItem(INPUT_STORAGE_FECHA, fechaInput.value);
 	}

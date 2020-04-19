@@ -1,19 +1,20 @@
 const API_KEY = 'V0XRE4Q-FTYMPCA-MDWV1J2-XCFC55F';
 
+
 const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers?limit=10') => {
 	//const searchAPIEndpoint = `${apiURL}/?search=`;
 	const showsAPIEndpoint = `${apiURL}`;
 	const showsApiDetails = 'https://beerflix-api.herokuapp.com/api/v1/beers';
 
 	return {
-		/* Funcion que muestra las cervezas en la pagina principal */
+		/* Show beers on main page */
 		getShows: async (filtro1, fecha) => {
 			try {
 				const URL = filtro1
 					? `https://beerflix-api.herokuapp.com/api/v1/beers?limit=10&search=${filtro1}`
 					: showsAPIEndpoint;
 
-				/* validaciones de fecha */
+				/* dates validations */
 				let fechaOK;
 
 				if (fecha != undefined && fecha != '') {
@@ -39,7 +40,7 @@ const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers?limit=10'
 			}
 		},
 
-		/*Recuperamos el detalle de la cerveza */
+		/*Retrieve detail page */
 		getShowDetail: (id) => {
 			return fetch(`${showsApiDetails}/${id}`, {
 				method: 'GET',
@@ -62,7 +63,7 @@ const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers?limit=10'
 				});
 		},
 
-		/* Funcion que envie el "Like" */
+		/* Send "Like" */
 		pushLikes: (beerId) => {
 			let api = `https://beerflix-api.herokuapp.com/api/v1/beers/${beerId}/like`;
 
@@ -89,7 +90,7 @@ const api = (apiURL = 'https://beerflix-api.herokuapp.com/api/v1/beers?limit=10'
 	};
 };
 
-/* funcion que convierta la fecha de filtrado para la comparacion correcta con la del formato API */
+/* convert data function */
 const goodDate = (filtroFecha) => {
 	var info = filtroFecha.split('-');
 	return info[1] + '/' + info[0];

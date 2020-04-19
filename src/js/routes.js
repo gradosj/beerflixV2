@@ -6,7 +6,8 @@ import {INPUT_STORAGE_ID, INPUT_STORAGE_FECHA, STORAGE_TYPE} from './navbar.js';
 
 const {getItem} = storage(STORAGE_TYPE);
 
-/*recibimos los parametros almacenados en la storage */
+/*We receive lstorage parameters */
+
 
 page('/', () => {
       renderHomeShows(getItem(INPUT_STORAGE_ID), getItem(INPUT_STORAGE_FECHA));

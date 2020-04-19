@@ -3,6 +3,7 @@ const lStorage = {
 	getItem: (key) => localStorage.getItem(key)
 };
 
+
 const cookieStorage = {
 	setItem: (key, value) => Cookies.set(key, value),
 	getItem: (key) => Cookies.get(key)

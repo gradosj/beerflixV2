@@ -1,6 +1,8 @@
 //import renderShows from "./main";
 import api from './api.js';
 
+
+
 const { getShows } = api();
 
 const renderShows = (element, items, fecha) => {
@@ -9,7 +11,8 @@ const renderShows = (element, items, fecha) => {
 	items.forEach((items) => {
 		let fechaOK;
 
-		/* si el filtro de la fecha viene informado realizamos las validaciones y solo mostramos las menores a la fecha de filtrado */
+		/* 
+if the date filter is informed, we carry out the validations and only show the minor ones to the filtering date */
 
 		if (fecha != '' || fecha === undefined) {
 			fechaOK = goodDate(fecha);

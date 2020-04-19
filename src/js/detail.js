@@ -2,7 +2,7 @@ import api from './api.js';
 
 const { getShowDetail, pushLikes } = api();
 
-console.log('DESDE EL DETAIL');
+
 
 const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes, comments } = {}) => {
 
@@ -31,7 +31,7 @@ const detailTeplate = ({ name, image, firstBrewed, beerId, description, likes, c
     `;
 };
 
-/* Funcion que repinta los likes, dejamos el texto para el efecto al clickar */
+/* Repaint likes */
 
 function imprimirHTML(datos) {
  
