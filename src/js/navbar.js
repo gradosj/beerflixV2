@@ -12,12 +12,12 @@ const { setItem, getItem } = storage(STORAGE_TYPE);
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#input-search');
 const fechaInput = document.querySelector('#filtroFecha');
+const button     = document.querySelector('#submit')
 
 searchInput.value = getItem(INPUT_STORAGE_ID);
 fechaInput.value = getItem(INPUT_STORAGE_FECHA);
 
-
-searchForm.addEventListener('submit', (evt) => {
+const enviar = (evt) => {
 	evt.preventDefault();
 
 	if (searchInput.validity.valid || fechaInput.validity.valid) {
@@ -27,4 +27,9 @@ searchForm.addEventListener('submit', (evt) => {
 		setItem(INPUT_STORAGE_ID, searchInput.value);
 		setItem(INPUT_STORAGE_FECHA, fechaInput.value);
 	}
-});
+}
+
+searchForm.addEventListener('submit', enviar);
+fechaInput.addEventListener('submit', enviar);
+searchInput.addEventListener('submit', enviar);
+button.addEventListener('click', enviar);

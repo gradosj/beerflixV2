@@ -21,6 +21,8 @@ const renderShows = (element, items, fecha) => {
 		} else {
 			renderiza(element, items);
 		}
+
+		console.log(items.firstBrewed);
 	});
 };
 
